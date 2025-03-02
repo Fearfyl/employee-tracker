@@ -1,6 +1,8 @@
-import { Pool } from 'pg';
+import pg from 'pg';
 import { config } from 'dotenv';
 
+const {Pool}=pg;
+console.log (Pool);
 // Load environment variables from a .env file into process.env
 config();
 
