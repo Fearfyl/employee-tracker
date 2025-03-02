@@ -1,7 +1,7 @@
 import inquirer from 'inquirer';
 import {
     getDepartments, getRoles, getEmployees, addDepartment, addRole, addEmployee, deleteEmployee, deleteRole, getManagers, modifyEmployee, getEmployeesByDepartmentId, deleteDepartment, getEmployeesByManagerId, getDepartmentBudget, getEmployeesWithNoManagerOption, getEmployeesByRoleId
-} from './src/queries.js';
+} from './queries.js';
 
 const displayWelcomeMessage = () => {
     console.log(`
@@ -38,8 +38,8 @@ const promptUser = async () => {
         name: 'action',
         message: 'What would you like to do?',
         choices: [
-            'View All Departments', 'View All Roles', 'View All Employees', 'View Employees by Manager', 'View Employees by Department', 'View Department Budget',
-            'Add Department', 'Add Role', 'Add Employee', 'Update Employee Role', 'Delete Employee', 'Delete Role', 'Delete Department', 'Exit'
+            'View All Departments', 'View All Roles', 'View All Employees', 
+            'Add Department', 'Add Role', 'Add Employee', 'Update Employee Role', 'Exit'
         ]
     });
 
@@ -50,13 +50,13 @@ const promptUser = async () => {
         case 'View Employees by Manager': return viewEmployeesByManager();
         case 'View Employees by Department': return viewEmployeesByDepartment();
         case 'View Department Budget': return viewDepartmentBudget();
-        case 'Add Department': return confirmAction('Are you sure you want to add a new department?') && addNewDepartment();
-        case 'Add Role': return confirmAction('Are you sure you want to add a new role?') && addNewRole();
-        case 'Add Employee': return confirmAction('Are you sure you want to add a new employee?') && addNewEmployee();
+        case 'Add Department': return addNewDepartment();
+        case 'Add Role': return addNewRole();
+        case 'Add Employee': return addNewEmployee();
         case 'Update Employee Role': return updateEmployeeRole();
-        case 'Delete Employee': return confirmAction('Are you sure you want to delete an employee?') && removeEmployee();
+        case 'Delete Employee': return removeEmployee();
         case 'Delete Role': return deleteRoleWithCheck();
-        case 'Delete Department': return confirmAction('Are you sure you want to delete a department?') && removeDepartment();
+        case 'Delete Department': return removeDepartment();
         case 'Exit': console.log('Goodbye!'); process.exit();
     }
     promptUser();
@@ -105,7 +105,7 @@ const addNewRole = async () => {
             choices: departments.map(department => ({ name: department.name, value: department.id }))
         }
     ]);
-    await addRole({ title, salary, department_id });
+    await addRole( title, salary, department_id );
     console.log(`Added new role: ${title}`);
     promptUser();
 };
