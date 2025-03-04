@@ -6,6 +6,7 @@ Employee Tracker is a command-line application that allows users to manage a com
 ## Table of Contents
 - [Installation](#installation)
 - [Usage](#usage)
+- [Walkthrough](#walkthrough)
 - [License](#license)
 - [Contributing](#contributing)
 - [Tests](#tests)
@@ -32,6 +33,10 @@ Employee Tracker is a command-line application that allows users to manage a com
     node index.js
     ```
 3. Follow the prompts to manage the employee database.
+
+## Walkthrough
+For a detailed walkthrough of the application, watch the following video:
+[Employee Tracker Walkthrough](https://youtu.be/F7FlzuDX1jY)
 
 ## License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
